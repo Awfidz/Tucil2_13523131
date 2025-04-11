@@ -21,7 +21,7 @@ class Node {
         Node(bool isLeaf, int x, int y, int width, int height,  vector<vector<RGB>>& imageData);
         ~Node();
     
-        // Calculation methods - all return double for precision
+        // Calculation methods
         void calculateAverageColor(vector<vector<RGB>>& imageData);
         void calculateErrorRate(std::string methodChoice, vector<vector<RGB>>& imageData);
         double variance(vector<vector<RGB>>& imageData);
@@ -29,7 +29,7 @@ class Node {
         double maxPixelDifference(vector<vector<RGB>>& imageData);
         double entropy(vector<vector<RGB>>& imageData);
     
-        // Getters - should be const
+        // Getters
         RGB getAvgColor() const;
         int getNodeX() const;
         int getNodeY() const;
