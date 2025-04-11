@@ -6,8 +6,8 @@
 #include <vector>
 #include <string>
 #include <filesystem>
-#include <algorithm>  // for std::transform
-#include <cctype>     // for tolower
+#include <algorithm>  
+#include <cctype>     
 #include <iostream>
 
 using namespace std;
@@ -16,7 +16,7 @@ namespace ImageMaker {
     vector<unsigned char> convertTo1D(const vector<vector<RGB>>& imageData) {
         int height = imageData.size();
         int width = imageData[0].size();
-        vector<unsigned char> oneD(width * height * 3);  // RGB = 3 channels
+        vector<unsigned char> oneD(width * height * 3);  
         
         size_t idx = 0;
         for (int y = 0; y < height; ++y) {
@@ -39,11 +39,11 @@ namespace ImageMaker {
 
         bool success = false;
         if (ext == ".jpg" || ext == ".jpeg") {
-            // Untuk JPG: gunakan quality lebih rendah karena data sudah dikompresi oleh quadtree
+            // Quality diset ke 50 dari percobaan dengan quality 90,50,dan 20. didapati 50 memiliki hasil lebih baik
             success = stbi_write_jpg(outputPath.c_str(), width, height, 3, oneD.data(), 50);
         } else if (ext == ".png") {
-            // Untuk PNG: gunakan filter dan compression level maksimum
-            stbi_write_png_compression_level = 9;  // max compression
+            // menggunakan kompresi maksimum untuk kompresi file png
+            stbi_write_png_compression_level = 9;  
             success = stbi_write_png(outputPath.c_str(), width, height, 3, oneD.data(), width * 3);
         }
 
