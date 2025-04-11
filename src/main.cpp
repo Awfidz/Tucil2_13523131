@@ -125,8 +125,6 @@ int main() {
     quadtree.countNumNodes(quadtree.getRoot());
     cout << "Banyak simpul pada pohon: " << quadtree.getNumNodes() << endl;
 
-    cout << "Gambar terkompresi berhasil disimpan di: " << outputPath << endl;
-
     quadtree.~ImageQuadtree();
     cout << "====Terima kasih sudah menggunakan Image Compressor!====" << endl;
     return 0;
